@@ -1,0 +1,37 @@
+{
+  "name": "@i-vresse/pdbtbx-wit",
+  "version": "1.0.0",
+  "scripts": {
+    "test": "node test.js",
+    "build": "jco transpile target/wasm32-wasi/release/pdbtbx_wit.wasm -o dist"
+  },
+  "type": "module",
+  "main": "dist/pdbtbx_wit.js",
+  "types": "dist/pdbtbx_wit.d.ts",
+  "exports": {
+    ".": {
+      "default": "./dist/pdbtbx_wit.js",
+      "types": "./dist/pdbtbx_wit.d.ts"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "keywords": [
+    "pdb",
+    "mmcif",
+    "parse"
+  ],
+  "author": "Stefan Verhoeven",
+  "license": "Apache-2.0",
+  "description": "Wrapper around [pdbtbx rust library](https://crates.io/crates/pdbtbx) for reading (crystallographic) Protein Data Bank (PDB) and mmCIF files in JavaScript.",
+  "publishConfig": {
+    "access": "public"
+  },
+  "devDependencies": {
+    "@bytecodealliance/jco": "^1.2.4"
+  },
+  "engines": {
+    "node": ">=20.0.0"
+  }
+}
