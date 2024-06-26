@@ -6,15 +6,20 @@ Using [WebAssembly Component and Wasm Interface Type](https://component-model.by
 
 ## Usage
 
-```javascript
-
 ```shell
-# Install dependencies
+# Install Rust dependencies
 cargo install cargo-component
-npm install
 
-# Regen src/bindings.rs + build wasm
+# Regen src/bindings.rs 
+cargo component build
+
+# Implement wit in src/lib.rs
+
+# build wasm
 cargo component build --release
+
+# Install JS dependencies
+npm install
 
 # Display wit from wasm
 npx jco wit target/wasm32-wasi/release/pdbtbx_wit.wasm

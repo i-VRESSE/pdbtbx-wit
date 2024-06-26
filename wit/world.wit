@@ -1,8 +1,6 @@
 package component:pdbtbx-wit;
 
-
-interface pdbtbx-api {
-    
+world pdbtbx-wit {
     record residueinfo {
         seqnumber: u64,
         insertioncode: string,
@@ -20,13 +18,25 @@ interface pdbtbx-api {
         residuesperchain: list<residueinfos>,
         warnings: list<string>,
     }
-    
-    pdb2pdbinfo: func(content: string) -> result<pdbinfo, list<string>>;
-}
 
-/// An example world for the component to target.
-world pdbtbx-wit {
-    import pdbtbx-api;
-    export pdbtbx-api;
-    # TODO figure out where wasi: imports come from in generated wasm
+    record residue {
+        serial-number: s64,
+        name: string, // conformer.name[0]
+    }
+
+    record chain {
+        id: string,
+        residues: list<residue>,
+    }
+
+    resource pdb {
+        constructor();
+        info: func() -> result<pdbinfo, list<string>>;
+        identifier: func() -> option<string>;
+        chains: func() -> list<chain>;
+        warnings: func() -> list<string>;
+    }
+    
+    export open-pdb-raw: func(pdb: string) -> result<tuple<pdb, list<string>>, list<string>>;
+    // TODO figure out where wasi: imports come from in generated wasm
 }
