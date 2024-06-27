@@ -28,5 +28,5 @@ interface pdbtbx-api {
 world pdbtbx-wit {
     import pdbtbx-api;
     export pdbtbx-api;
-    # TODO figure out where wasi: imports come from in generated wasm
+    // TODO figure out where wasi: imports come from in generated wasm
 }
